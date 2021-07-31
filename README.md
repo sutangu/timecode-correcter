@@ -12,3 +12,5 @@ For example, you have the next list:
 And corrected value for each line, i.e., `00:01:58`.
 
 Now you can take corrected list after button had clicked.
+
+Demo page: https://sutangu.github.io/timecode-correcter
