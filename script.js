@@ -1,3 +1,4 @@
+const DateTime = luxon.DateTime;
 let inputHasValue = false;
 let textareaHasValue = false;
 let splitCorrecter = document.getElementById('correcter');
@@ -38,47 +39,11 @@ const correct = () => {
       if (code && code.length) {
         const splitCode = code.match(r);
         const joinedCode = splitCode.join(':');
-        let correctedCode = '';
 
-        for (let i = 0; i < splitCode.length; i++) {
-          let oneOf = Number(splitCode[i]) - Number(splitCorrecter[i]);
-          if (oneOf < 0) {
-            oneOf = String(60 + oneOf);
-
-            // seconds
-            if (i === 2) {
-              const secondsCorrection = correctedCode.split(':');
-              correctedCode = '';
-              for (let i = 0; i < secondsCorrection.length - 1; i++) {
-                if (secondsCorrection[i] > 0) {
-                  let oneOf = Number(secondsCorrection[i]) - 1;
-                  if (oneOf < 0) {
-                    oneOf = String(60 + oneOf);
-                  } else {
-                    oneOf = String(oneOf);
-                  }
-
-                  if (oneOf.length === 1) {
-                    oneOf = '0' + oneOf;
-                  }
-                  correctedCode += oneOf + ':';
-                } else {
-                  correctedCode += secondsCorrection[0] + ':';
-                }
-              }
-            }
-          } else {
-            oneOf = String(oneOf);
-          }
-
-          if (oneOf.length === 1) {
-            oneOf = '0' + oneOf;
-          }
-          correctedCode += oneOf + ':';
-        }
-        correctedCode = correctedCode.substring(0, correctedCode.length - 1);
-
-        code = code.replace(joinedCode, correctedCode);
+        let codeToChange = DateTime.local(2007, 5, 15, +splitCode[0], +splitCode[1], +splitCode[2]);
+        codeToChange = codeToChange.minus({hours: +splitCorrecter[0], minutes: +splitCorrecter[1], seconds: +splitCorrecter[2]})
+        let correctedCode = `${String(codeToChange.hour).length === 1 ? '0' + codeToChange.hour : codeToChange.hour}:${String(codeToChange.minute).length === 1 ? '0' + codeToChange.minute : codeToChange.minute}:${String(codeToChange.second).length === 1 ? '0' + codeToChange.second : codeToChange.second}`;
+        code = code.replace(joinedCode, correctedCode.trim());
 
         return code + '\n';
       }

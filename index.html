@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <title>WebStorm</title>
+  <title>Timecodes correcter</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -10,8 +10,9 @@
   <label>
     Difference value
     i.e.:
+    <!-- TODO for two couple digits MM:SS -->
     <span onclick="setValue('input')">00:07:23</span>
-    <input id="correcter" name="correct"/>
+    <input id="correcter" name="correct" value="00:01:10"/>
   </label>
 
   <label>
@@ -21,12 +22,13 @@
       <span>00:10:23 Stream started</span>
       <span>00:45:11 Next topic</span>
     </span>
-    <textarea id="timecodes" cols="50" rows="30" name="timecodes"></textarea>
+    <textarea id="timecodes" cols="50" rows="30" name="timecodes">01:01:01</textarea>
   </label>
 
-  <button id="correct-button" onclick="correct()" disabled type="button">Correct it</button>
+  <button id="correct-button" onclick="correct()"  type="button">Correct it</button>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/luxon@2.0.1/build/global/luxon.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
