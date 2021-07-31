@@ -1,9 +1,10 @@
 const DateTime = luxon.DateTime;
+const buttonElement = document.getElementById('correct-button');
 let inputHasValue = false;
 let textareaHasValue = false;
 let splitCorrecter = document.getElementById('correcter');
 let timecodes = document.getElementById('timecodes');
-const buttonElement = document.getElementById('correct-button');
+
 
 document.getElementById("correcter")
   .addEventListener("input", (event) => {
@@ -11,11 +12,13 @@ document.getElementById("correcter")
     watchButtonDisable();
   });
 
+
 document.getElementById("timecodes")
   .addEventListener("input", (event) => {
     textareaHasValue = !!event.currentTarget.value.length;
     watchButtonDisable();
   });
+
 
 const watchButtonDisable = () => {
   if (inputHasValue && textareaHasValue) {
@@ -39,10 +42,18 @@ const correct = () => {
       if (code && code.length) {
         const splitCode = code.match(r);
         const joinedCode = splitCode.join(':');
+        let codeToChange;
+        let correctedCode = '';
 
-        let codeToChange = DateTime.local(2007, 5, 15, +splitCode[0], +splitCode[1], +splitCode[2]);
-        codeToChange = codeToChange.minus({hours: +splitCorrecter[0], minutes: +splitCorrecter[1], seconds: +splitCorrecter[2]})
-        let correctedCode = `${String(codeToChange.hour).length === 1 ? '0' + codeToChange.hour : codeToChange.hour}:${String(codeToChange.minute).length === 1 ? '0' + codeToChange.minute : codeToChange.minute}:${String(codeToChange.second).length === 1 ? '0' + codeToChange.second : codeToChange.second}`;
+        if (splitCode.length === 2) {
+          codeToChange = DateTime.local(2007, 5, 15, 0, +splitCode[0], +splitCode[1]);
+          codeToChange = codeToChange.minus({minutes: +splitCorrecter[0], seconds: +splitCorrecter[1]});
+          correctedCode = `${String(codeToChange.minute).length === 1 ? '0' + codeToChange.minute : codeToChange.minute}:${String(codeToChange.second).length === 1 ? '0' + codeToChange.second : codeToChange.second}`;
+        } else {
+          codeToChange = DateTime.local(2007, 5, 15, +splitCode[0], +splitCode[1], +splitCode[2]);
+          codeToChange = codeToChange.minus({hours: +splitCorrecter[0], minutes: +splitCorrecter[1], seconds: +splitCorrecter[2]});
+          correctedCode = `${String(codeToChange.hour).length === 1 ? '0' + codeToChange.hour : codeToChange.hour}:${String(codeToChange.minute).length === 1 ? '0' + codeToChange.minute : codeToChange.minute}:${String(codeToChange.second).length === 1 ? '0' + codeToChange.second : codeToChange.second}`;
+        }
         code = code.replace(joinedCode, correctedCode.trim());
 
         return code + '\n';
@@ -60,6 +71,7 @@ const correct = () => {
     buttonElement.style.color = 'red';
   }
 };
+
 
 const setValue = (type) => {
   if (type === 'input') {
