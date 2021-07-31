@@ -1,13 +1,37 @@
 body {
   font-size: 10px;
+  font-family: monospace;
 }
 
 .form, .form label, .form label span {
   display: flex;
   flex-direction: column;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .form label {
   margin-bottom: 1rem;
+}
+
+.underline {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+input, textarea {
+  border: 2px solid;
+  margin-top: .8rem;
+}
+
+button {
+  padding: 2rem;
+  font-size: 2rem;
+  background-color: midnightblue;
+  color: aliceblue;
+}
+
+button:disabled {
+  background-color: #aaa;
+  color: aliceblue;
 }
