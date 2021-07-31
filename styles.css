@@ -1,0 +1,13 @@
+body {
+  font-size: 10px;
+}
+
+.form, .form label, .form label span {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+}
+
+.form label {
+  margin-bottom: 1rem;
+}

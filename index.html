@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>WebStorm</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Correct timecodes w/ difference</h1>
+<div class="form">
+  <label>
+    Difference value
+    i.e.:
+    <span onclick="setValue('input')">00:07:23</span>
+    <input id="correcter" name="correct"/>
+  </label>
+
+  <label>
+    Timecodes to correct
+    i.e.:
+    <span onclick="setValue('textarea')">
+      <span>00:10:23 Stream started</span>
+      <span>00:45:11 Next topic</span>
+    </span>
+    <textarea id="timecodes" cols="50" rows="30" name="timecodes"></textarea>
+  </label>
+
+  <button id="correct-button" onclick="correct()" disabled type="button">Correct it</button>
+</div>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
