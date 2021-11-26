@@ -1,9 +1,11 @@
 const DateTime = luxon.DateTime;
-const buttonElement = document.getElementById('correct-button');
+const copyButtonElement = document.getElementById('copy-button');
+const correctButtonElement = document.getElementById('correct-button');
 let inputHasValue = false;
 let textareaHasValue = false;
 let splitCorrecter = document.getElementById('correcter');
 let timecodes = document.getElementById('timecodes');
+let result = document.getElementById('result');
 
 
 document.getElementById("correcter")
@@ -22,18 +24,24 @@ document.getElementById("timecodes")
 
 const watchButtonDisable = () => {
   if (inputHasValue && textareaHasValue) {
-    buttonElement.removeAttribute("disabled");
+    correctButtonElement.removeAttribute("disabled");
+    copyButtonElement.classList.add("show-button");
+    correct();
   } else {
-    buttonElement.setAttribute('disabled', '');
+    correctButtonElement.setAttribute('disabled', '');
   }
 }
 
+const copyResult = () => {
+  const copyTextarea = document.getElementById('result').innerText;
+  navigator.clipboard.writeText(copyTextarea).catch(e => console.log('copyResult error', e));
+}
 
 const correct = () => {
-  if (!buttonElement.hasAttribute('disabled') && inputHasValue && textareaHasValue) {
+  if (!correctButtonElement.hasAttribute('disabled') && inputHasValue && textareaHasValue) {
     const r = /\d+/g;
-    splitCorrecter = splitCorrecter.value.split(':');
-    timecodes = timecodes.value.split('\n');
+    splitCorrecter = document.getElementById('correcter').value.split(':');
+    timecodes = document.getElementById('timecodes').value.split('\n');
 
     const correctedCodes = timecodes.map(code => {
       if (code.includes('00:00:00')) {
@@ -60,25 +68,26 @@ const correct = () => {
       }
     });
 
-    document.getElementById('timecodes').value = correctedCodes.join('');
-    buttonElement.innerHTML = 'Success!';
-    buttonElement.style.color = 'green';
-    buttonElement.setAttribute('disabled', '');
-    document.getElementById('timecodes').focus();
-    document.getElementById('timecodes').select();
+    // document.getElementById('timecodes').value = correctedCodes.join('');
+    result.innerText = correctedCodes.join('');
+    correctButtonElement.innerHTML = 'Success!';
+    correctButtonElement.style.color = 'green';
+    correctButtonElement.setAttribute('disabled', '');
+    // document.getElementById('timecodes').focus();
+    // document.getElementById('timecodes').select();
   } else {
-    buttonElement.innerHTML = 'Fail!';
-    buttonElement.style.color = 'red';
+    correctButtonElement.innerHTML = 'Fail!';
+    correctButtonElement.style.color = 'red';
   }
 };
 
 
 const setValue = (type) => {
   if (type === 'input') {
-    splitCorrecter.value = '00:07:23';
+    document.getElementById('correcter').value = '00:01:23';
     inputHasValue = true;
   } else {
-    timecodes.value = '00:10:23 Stream started\n00:45:11 Next topic'
+    document.getElementById('timecodes').value = '00:10:23 Stream started\n00:45:11 Next topic'
     textareaHasValue = true;
   }
   watchButtonDisable();

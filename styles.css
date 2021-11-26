@@ -1,13 +1,25 @@
 body {
   font-size: 10px;
   font-family: monospace;
+  padding: 1rem;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-top: 0;
 }
 
 h2 {
+  font-family: monospace;
   margin-bottom: 2rem;
 }
 
-.form, .form label, .form label span {
+.form {
+  width: 100%;
+}
+
+.form label, .form label span {
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
@@ -20,6 +32,7 @@ h2 {
 
 .underline {
   cursor: pointer;
+  padding-bottom: 1rem;
   text-decoration: underline;
   text-decoration-style: dotted;
 }
@@ -30,13 +43,59 @@ input, textarea {
 }
 
 button {
-  padding: 2rem;
-  font-size: 2rem;
   background-color: midnightblue;
   color: aliceblue;
+
 }
 
 button:disabled {
   background-color: #aaa;
   color: aliceblue;
+}
+
+#copy-button {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding: .4rem 4rem;
+  opacity: 0;
+}
+
+.show-button {
+  transition: .3s;
+  opacity: 1!important;
+}
+
+#correct-button {
+  padding: 2rem;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.grid {
+  display: flex;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+
+#timecodes {
+  margin-top: 0;
+}
+
+.data {
+  background-color: aqua;
+  padding: 1rem 1rem 0;
+}
+
+.result {
+  background-color: sandybrown;
+  height: available;
+  padding: 1rem;
+  width: 100%;
+}
+
+#result {
+  font-size: 1.2rem;
+  max-height: 33rem;
+  overflow: scroll;
 }

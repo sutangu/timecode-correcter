@@ -3,32 +3,57 @@
 <head>
   <title>Timecodes correcter</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(83776837, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/83776837" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-<h1>Correct timecodes with difference</h1>
-<h2>It works with HH:MM:SS and MM:SS, only</h2>
+<h1>Correct timecodes w/ diff v1.2.3</h1>
+<h2>It works with <i>HH:MM:SS</i> and <i>MM:SS</i> only</h2>
 <div class="form">
-  <label>
-    Difference value
-    i.e.:
-    <span onclick="setValue('input')" class="underline">00:07:23</span>
-    <input id="correcter" name="correct" />
-  </label>
+  <div class="grid">
+    <div class="data">
+      <label>
+        Difference value
+        i.e.:
+        <span onclick="setValue('input')" class="underline">00:01:23</span>
+        <input id="correcter" name="correct" />
+      </label>
 
-  <label>
-    Timecodes to correct
-    i.e.:
-    <span onclick="setValue('textarea')" class="underline">
-      <span>00:10:23 Stream started</span>
-      <span>00:45:11 Next topic</span>
-    </span>
-    <textarea id="timecodes" cols="50" rows="30" name="timecodes"></textarea>
-  </label>
+      <label>
+        Timecodes to correct
+        i.e.:
+        <span onclick="setValue('textarea')" class="underline">
+          <span>00:10:23 Stream started</span>
+          <span>00:45:11 Next topic</span>
+        </span>
+        <textarea id="timecodes" cols="50" rows="30" name="timecodes"></textarea>
+      </label>
+    </div>
+
+    <div class="result">
+      <h2>Correct result is:</h2>
+      <button id="copy-button" onclick="copyResult()">copy corrected</button>
+      <div id="result">result will be here</div>
+    </div>
+
+  </div>
 
   <button id="correct-button" onclick="correct()" disabled type="button">Correct it</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.1/build/global/luxon.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="timecodes.js"></script>
 </body>
 </html>
