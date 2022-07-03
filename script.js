@@ -1,12 +1,11 @@
 const DateTime = luxon.DateTime;
 const copyButtonElement = document.getElementById('copy-button');
-const correctButtonElement = document.getElementById('correct-button');
+const correctInfoElement = document.getElementById('is-corrected');
 let inputHasValue = false;
 let textareaHasValue = false;
 let splitCorrecter = document.getElementById('correcter');
 let timecodes = document.getElementById('timecodes');
 let result = document.getElementById('result');
-
 
 document.getElementById("correcter")
   .addEventListener("input", (event) => {
@@ -14,31 +13,35 @@ document.getElementById("correcter")
     watchButtonDisable();
   });
 
-
 document.getElementById("timecodes")
   .addEventListener("input", (event) => {
     textareaHasValue = !!event.currentTarget.value.length;
     watchButtonDisable();
   });
 
-
 const watchButtonDisable = () => {
   if (inputHasValue && textareaHasValue) {
-    correctButtonElement.removeAttribute("disabled");
+    correctInfoElement.removeAttribute("disabled");
     copyButtonElement.classList.add("show-button");
     correct();
   } else {
-    correctButtonElement.setAttribute('disabled', '');
+    correctInfoElement.setAttribute('disabled', '');
   }
 }
 
 const copyResult = () => {
   const copyTextarea = document.getElementById('result').innerText;
   navigator.clipboard.writeText(copyTextarea).catch(e => console.log('copyResult error', e));
+
+  const copyButtonText = document.getElementById('copy-button').innerText;
+  document.getElementById('copy-button').innerText = 'copied';
+  setTimeout(() => {
+    document.getElementById('copy-button').innerText = copyButtonText;
+  }, 5000);
 }
 
 const correct = () => {
-  if (!correctButtonElement.hasAttribute('disabled') && inputHasValue && textareaHasValue) {
+  if (!correctInfoElement.hasAttribute('disabled') && inputHasValue && textareaHasValue) {
     const r = /\d+/g;
     splitCorrecter = document.getElementById('correcter').value.split(':');
     timecodes = document.getElementById('timecodes').value.split('\n');
@@ -68,19 +71,15 @@ const correct = () => {
       }
     });
 
-    // document.getElementById('timecodes').value = correctedCodes.join('');
     result.innerText = correctedCodes.join('');
-    correctButtonElement.innerHTML = 'Success!';
-    correctButtonElement.style.color = 'green';
-    correctButtonElement.setAttribute('disabled', '');
-    // document.getElementById('timecodes').focus();
-    // document.getElementById('timecodes').select();
+    correctInfoElement.innerHTML = 'Success!';
+    correctInfoElement.style.color = 'green';
+    correctInfoElement.setAttribute('disabled', '');
   } else {
-    correctButtonElement.innerHTML = 'Fail!';
-    correctButtonElement.style.color = 'red';
+    correctInfoElement.innerHTML = 'Fail!';
+    correctInfoElement.style.color = 'red';
   }
 };
-
 
 const setValue = (type) => {
   if (type === 'input') {

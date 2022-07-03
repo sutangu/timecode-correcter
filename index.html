@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <title>Timecodes correcter</title>
+  <meta name="keywords" content="timecodes, stream, youtube, twitch, podcast">
+  <meta name="description" content="Corrector of timecodes for podcast or stream or whatever">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Correct timecodes w/ diff v1.2.3</h1>
+<h1>Correct timecodes w/ diff v1.3.0</h1>
 <h2>It works with <i>HH:MM:SS</i> and <i>MM:SS</i> only</h2>
 <div class="form">
   <div class="grid">
@@ -30,16 +32,16 @@
 
     <div class="result">
       <h2>Correct result is:</h2>
-      <button id="copy-button" onclick="copyResult()">copy corrected</button>
+      <button id="copy-button" onclick="copyResult()">copy corrected list</button>
       <div id="result">result will be here</div>
     </div>
 
   </div>
 
-  <button id="correct-button" onclick="correct()" disabled type="button">Correct it</button>
+  <div id="is-corrected"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.1/build/global/luxon.min.js"></script>
-<script type="text/javascript" src="timecodes.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>

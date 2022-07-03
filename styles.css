@@ -42,22 +42,24 @@ input, textarea {
   margin-top: .8rem;
 }
 
-button {
-  background-color: midnightblue;
-  color: aliceblue;
-
-}
-
 button:disabled {
   background-color: #aaa;
   color: aliceblue;
 }
 
 #copy-button {
+  background-color: #F39B6D;
+  border: none;
+  color: aliceblue;
   font-size: 1rem;
   margin-bottom: 1rem;
   padding: .4rem 4rem;
   opacity: 0;
+}
+
+#copy-button:hover {
+  cursor: pointer;
+  opacity: .8!important;
 }
 
 .show-button {
@@ -83,12 +85,12 @@ button:disabled {
 }
 
 .data {
-  background-color: aqua;
+  background-color: #e0763e;
   padding: 1rem 1rem 0;
 }
 
 .result {
-  background-color: sandybrown;
+  background-color: #3E6990;
   height: available;
   padding: 1rem;
   width: 100%;
@@ -97,5 +99,11 @@ button:disabled {
 #result {
   font-size: 1.2rem;
   max-height: 33rem;
-  overflow: scroll;
+  overflow: auto;
+}
+
+#is-corrected {
+  background-color: #ecead8;
+  font-size: 2rem;
+  padding: .8rem;
 }
