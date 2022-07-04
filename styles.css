@@ -45,13 +45,13 @@ h2 {
 .underline {
   cursor: pointer;
   padding-bottom: 1rem;
+  padding-top: 1rem;
   text-decoration: underline;
   text-decoration-style: dotted;
 }
 
 input, textarea {
   border: 2px solid;
-  margin-top: .8rem;
 }
 
 button:disabled {
@@ -94,18 +94,24 @@ button:disabled {
   margin-bottom: 1rem;
 }
 
+.correcter-wrap {
+  width: 100%!important;
+}
+
 #timecodes {
   margin-top: 0;
 }
 
 .data {
   background-color: #e0763e;
+  box-shadow: 0 7px 14px #000 inset;
   padding: 1rem 1rem 0;
 }
 
 .result-wrapper {
   color: #fff;
   background-color: #3E6990;
+  box-shadow: 0 7px 14px #000 inset;
   height: available;
   padding: 1rem;
   width: 100%;
@@ -120,6 +126,7 @@ button:disabled {
 
 #is-corrected {
   background-color: #ecead8;
+  box-shadow: 0 0 2px #000 inset;
   font-size: 2rem;
   padding: .8rem;
 }
