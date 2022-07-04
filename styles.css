@@ -1,18 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-size: 10px;
-  font-family: monospace;
+  font-family: sans-serif;
   padding: 1rem;
   margin: 0;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 3.6rem;
+  margin-bottom: 2.4rem;
   margin-top: 0;
 }
 
 h2 {
   font-family: monospace;
-  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  margin-bottom: 1.8rem;
+}
+
+.version {
+  color: #717171;
+  font-size: .5em;
 }
 
 .form {
@@ -100,8 +112,9 @@ button:disabled {
 }
 
 #result {
+  background-color: #345b7f;
   font-size: 1.2rem;
-  max-height: 33rem;
+  max-height: 50vh;
   overflow: auto;
 }
 

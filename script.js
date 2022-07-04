@@ -83,10 +83,10 @@ const correct = () => {
 
 const setValue = (type) => {
   if (type === 'input') {
-    document.getElementById('correcter').value = '00:01:23';
+    document.getElementById('correcter').value = document.getElementById('example-correcter').innerText;
     inputHasValue = true;
   } else {
-    document.getElementById('timecodes').value = '00:10:23 Stream started\n00:45:11 Next topic'
+    document.getElementById('timecodes').value = document.getElementById('example-list').innerText;
     textareaHasValue = true;
   }
   watchButtonDisable();

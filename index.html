@@ -7,24 +7,27 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Correct timecodes w/ diff v1.3.1</h1>
-<h2>It works with <i>HH:MM:SS</i> and <i>MM:SS</i> only</h2>
+<h1>Correct timecodes w/ diff <small class="version">(ver. 1.4.0)</small></h1>
+<h2>It works with <i>HH:MM:SS</i> or <i>MM:SS</i> only</h2>
 <div class="form">
   <div class="grid">
     <div class="data">
       <label>
         Difference value
         i.e.:
-        <span onclick="setValue('input')" class="underline">00:01:23</span>
+        <span id="example-correcter" onclick="setValue('input')" class="underline">00:01:23</span>
         <input id="correcter" name="correct" />
       </label>
 
       <label>
         Timecodes to correct
         i.e.:
-        <span onclick="setValue('textarea')" class="underline">
+        <span id="example-list" onclick="setValue('textarea')" class="underline">
+          <span>00:00:00 Stream has started</span>
           <span>00:10:23 Stream started</span>
+          <span>00:32:45 Main theme</span>
           <span>00:45:11 Next topic</span>
+          <span>01:41:12 Next topic</span>
         </span>
         <textarea id="timecodes" cols="50" rows="30" name="timecodes"></textarea>
       </label>
