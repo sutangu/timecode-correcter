@@ -37,7 +37,7 @@ const copyResult = () => {
   document.getElementById('copy-button').innerText = 'copied';
   setTimeout(() => {
     document.getElementById('copy-button').innerText = copyButtonText;
-  }, 5000);
+  }, 3200);
 }
 
 const correct = () => {
