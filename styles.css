@@ -10,6 +10,10 @@ body {
   margin: 0;
 }
 
+body.ready {
+  background-color: #3E6990;
+}
+
 h1 {
   font-size: 3.6rem;
   margin-bottom: 2.4rem;
@@ -112,13 +116,44 @@ button:disabled {
   padding: 1rem 1rem 0;
 }
 
+.overflow {
+  height: available;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
 .result-wrapper {
   color: #fff;
   background-color: #3E6990;
-  box-shadow: 0 7px 14px #000 inset;
-  height: available;
+  height: 100%;
   padding: 1rem;
+  position: relative;
+  margin-left: -100%;
+  transition: margin-left 0.4s ease-in-out;
+}
+
+.result-wrapper.ready {
+  box-shadow: none!important;
+  transition: margin-left 0.4s ease-in-out;
+  margin-left: 0;
+}
+
+.result-wrapper::after {
+  box-shadow: 0 7px 14px #000 inset;
+  content: ' ';
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
   width: 100%;
+}
+
+/* Transition to showing the bigger shadow on hover */
+.result-wrapper.ready::after {
+  opacity: 1;
 }
 
 #result {
@@ -126,6 +161,7 @@ button:disabled {
   font-size: 1.2rem;
   max-height: 50vh;
   overflow: auto;
+  width: fit-content;
 }
 
 #is-corrected {

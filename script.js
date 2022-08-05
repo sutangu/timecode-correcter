@@ -1,6 +1,7 @@
 const DateTime = luxon.DateTime;
 const copyButtonElement = document.getElementById('copy-button');
 const correctInfoElement = document.getElementById('is-corrected');
+const resultWrapperElement = document.getElementsByClassName('result-wrapper')[0];
 let inputHasValue = false;
 let textareaHasValue = false;
 let splitCorrecter = document.getElementById('correcter');
@@ -23,9 +24,14 @@ const watchButtonDisable = () => {
   if (inputHasValue && textareaHasValue) {
     correctInfoElement.removeAttribute("disabled");
     copyButtonElement.classList.add("show-button");
+    resultWrapperElement.classList.add("ready");
+    document.body.classList.add("ready");
     correct();
   } else {
     correctInfoElement.setAttribute('disabled', '');
+    copyButtonElement.classList.remove("show-button");
+    resultWrapperElement.classList.remove("ready");
+    document.body.classList.remove("ready");
   }
 }
 
